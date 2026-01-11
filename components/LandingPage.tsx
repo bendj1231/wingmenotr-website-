@@ -432,7 +432,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ isVideoWarm = false, s
 
       </div>
       
-      {/* Laptop Mobile Suite Showcase Section (Replacing old Cover Flow) */}
+      {/* Laptop Mobile Suite Showcase Section */}
       <div className={`w-full py-16 md:py-24 border-b relative ${isDarkMode ? 'bg-black border-zinc-900' : 'bg-white border-zinc-200'}`}>
         <div 
             className="cursor-pointer flex flex-col items-center justify-center space-y-4 select-none mb-12" 
@@ -486,26 +486,36 @@ export const LandingPage: React.FC<LandingPageProps> = ({ isVideoWarm = false, s
             </p>
 
             {/* Access Buttons - REPLACED WITH MOBILE AND DESKTOP */}
-            <div className="mt-8 flex flex-wrap justify-center gap-6">
-                <button className={`flex items-center space-x-3 px-6 py-3 rounded-xl border transition-all hover:-translate-y-1 shadow-lg cursor-pointer
-                                  ${isDarkMode ? 'bg-zinc-900 border-zinc-700 hover:bg-zinc-800' : 'bg-white border-zinc-300 hover:bg-zinc-50'}`}>
-                    <i className="fas fa-mobile-alt text-2xl"></i>
-                    <div className="text-left">
-                        <p className="text-[9px] uppercase tracking-wider opacity-60">Access on</p>
-                        <p className="text-sm font-bold leading-none">Mobile</p>
-                    </div>
-                </button>
+            <div className="mt-8 flex flex-col items-center space-y-6"> 
+                <div className="flex flex-wrap justify-center gap-6">
+                    <button 
+                        onClick={onGoToEnrollment}
+                        className={`flex items-center space-x-3 px-6 py-3 rounded-xl border transition-all hover:-translate-y-1 shadow-lg cursor-pointer
+                                  bg-red-600 border-red-500 text-white hover:bg-red-500 shadow-red-900/20`}
+                    >
+                        <i className="fas fa-mobile-alt text-2xl"></i>
+                        <div className="text-left">
+                            <p className="text-[9px] uppercase tracking-wider opacity-80">Access on</p>
+                            <p className="text-sm font-bold leading-none">Mobile</p>
+                        </div>
+                    </button>
 
-                <button 
-                    onClick={onGoToEnrollment}
-                    className={`flex items-center space-x-3 px-6 py-3 rounded-xl border transition-all hover:-translate-y-1 shadow-lg cursor-pointer
-                                  ${isDarkMode ? 'bg-blue-600 border-blue-500 text-white hover:bg-blue-500' : 'bg-blue-600 border-blue-500 text-white hover:bg-blue-500'}`}>
-                    <i className="fas fa-desktop text-2xl"></i>
-                    <div className="text-left">
-                        <p className="text-[9px] uppercase tracking-wider opacity-80">Access on</p>
-                        <p className="text-sm font-bold leading-none">Desktop</p>
-                    </div>
-                </button>
+                    <button 
+                        onClick={onGoToEnrollment}
+                        className={`flex items-center space-x-3 px-6 py-3 rounded-xl border transition-all hover:-translate-y-1 shadow-lg cursor-pointer
+                                  bg-blue-600 border-blue-500 text-white hover:bg-blue-500 shadow-blue-900/20`}
+                    >
+                        <i className="fas fa-desktop text-2xl"></i>
+                        <div className="text-left">
+                            <p className="text-[9px] uppercase tracking-wider opacity-80">Access on</p>
+                            <p className="text-sm font-bold leading-none">Desktop</p>
+                        </div>
+                    </button>
+                </div>
+                
+                <p className={`mt-6 text-[10px] font-bold uppercase tracking-widest text-center max-w-md ${isDarkMode ? 'text-zinc-500' : 'text-zinc-600'}`}>
+                    You must be signed in or part of the WingMentor Program to access the Apps Suite.
+                </p>
             </div>
         </div>
 
@@ -568,29 +578,31 @@ export const LandingPage: React.FC<LandingPageProps> = ({ isVideoWarm = false, s
 
       <PilotsStory />
 
+      {/* --- RECONSTRUCTED 'ABOUT PROGRAM & APPS' SECTION BASED ON USER REQUEST --- */}
       <div 
         id="about-program-overview-section"
         className={`w-full relative py-24 px-6 flex flex-col items-center justify-center transition-colors duration-500
                     ${isDarkMode ? 'bg-black text-white' : 'bg-zinc-100 text-black'} border-y ${isDarkMode ? 'border-zinc-900' : 'border-zinc-200'}`}
       >
+          {/* Background */}
           <div className="absolute inset-0 z-0 opacity-10 dark:opacity-5" style={{ backgroundImage: `url(${images.MINDMAP_SECTION_BG})`, backgroundSize: 'cover', backgroundPosition: 'center' }}></div>
           <div className={`absolute inset-0 z-0 ${isDarkMode ? 'bg-black/80' : 'bg-zinc-100/80'}`}></div>
 
-          <div className="relative z-10 w-full max-w-7xl mx-auto text-center">
-              <RevealOnScroll>
+          <div className="relative z-10 w-full max-w-7xl mx-auto text-center space-y-32">
+              
+              {/* RESTORED: Program Overview Header & Description (Based on original functionality) */}
+              <RevealOnScroll className="flex flex-col items-center space-y-8">
                   <div className="flex justify-center mb-6">
-                      <img src={images.LOGO} alt="Wing Mentor Logo" className={`w-64 md:w-[450px] h-auto object-contain ${!isDarkMode && 'filter brightness-0 invert-0'}`} />
+                      <img src={images.LOGO} alt="Wing Mentor Logo" className={`w-64 md:w-[450px] h-auto object-contain ${isDarkMode ? 'filter invert' : ''}`} />
                   </div>
-                  <h2 className={`text-4xl md:text-5xl font-bold brand-font uppercase tracking-widest mb-4 ${isDarkMode ? 'text-white' : 'text-zinc-900'}`}>
+                  <h2 className={`text-4xl md:text-5xl font-bold brand-font uppercase tracking-widest ${isDarkMode ? 'text-white' : 'text-zinc-900'}`}>
                       About Program & Apps
                   </h2>
-                  <p className={`text-xl md:text-2xl leading-relaxed mb-12 ${textHighlight}`}>
+                  <p className={`text-xl md:text-2xl leading-relaxed max-w-4xl mx-auto ${isDarkMode ? 'text-blue-400' : 'text-blue-600'}`}>
                       Transforming Low-Time Pilots into Verifiable Assets.
                   </p>
-              </RevealOnScroll>
-
-              <RevealOnScroll delay={100} className="max-w-4xl mx-auto mb-16 text-left">
-                  <div className={`w-full rounded-xl overflow-hidden shadow-2xl border relative group mb-10 ${isDarkMode ? 'border-zinc-700/50' : 'border-zinc-300'}`}>
+                  
+                  <div className={`w-full rounded-xl overflow-hidden shadow-2xl border relative group max-w-4xl mx-auto ${isDarkMode ? 'border-zinc-700/50' : 'border-zinc-300'}`}>
                       <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500"></div>
                       <img 
                           src="https://lh3.googleusercontent.com/d/143EeRX8BneoJRBh32bD4UgpHLUByBCbc" 
@@ -602,7 +614,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ isVideoWarm = false, s
                       </div>
                   </div>
 
-                  <div className={`text-lg leading-relaxed space-y-6 font-light ${isDarkMode ? 'text-zinc-300' : 'text-zinc-800'}`}>
+                  <div className={`text-lg leading-relaxed space-y-6 font-light max-w-4xl mx-auto text-left ${isDarkMode ? 'text-zinc-300' : 'text-zinc-800'}`}>
                       <p>
                           The WingMentor program creates a symbiotic environment where both mentor and mentee gain valuable experience. Every logged mentor session is another tangible step towards your program goals. Within the WingMentor framework, you will assess and learn how to understand and assess mentees on their decision-making thinking—whether it is in a simulator practice session or analyzing complex <span className="font-bold">IFR approach charts</span>.
                       </p>
@@ -612,189 +624,162 @@ export const LandingPage: React.FC<LandingPageProps> = ({ isVideoWarm = false, s
                   </div>
               </RevealOnScroll>
 
-              {/* ... (Existing sections like Milestones, Differentiation, Approach Chart, etc. are kept intact but shortened in this output for brevity) ... */}
-              {/* To preserve the structure, I will only output the FULL updated Pilot Apps section at the end of the file as requested */}
-              
-              {/* REPLACED: Updated Pilot Apps Suite Section with TABLET UI */}
-              <div id="pilot-apps-made-by-pilots-section" className={`mt-20 w-full border-y py-32 px-6 flex flex-col items-center transition-colors duration-500 ${isDarkMode ? 'bg-black border-zinc-900' : 'bg-zinc-50 border-zinc-200'}`}>
-                {/* Header */}
-                <RevealOnScroll className="text-center mb-16">
-                    <h2 className={`text-4xl md:text-6xl font-bold brand-font uppercase tracking-tight mb-4 ${isDarkMode ? 'text-white' : 'text-zinc-900'}`}>
-                        WINGMENTOR PROGRAM<br/>
-                        <span className="text-yellow-500">PILOT APPS</span>
-                    </h2>
-                    <p className={`text-sm md:text-base font-mono uppercase tracking-[0.2em] font-bold ${isDarkMode ? 'text-zinc-400' : 'text-zinc-500'}`}>
-                        STATE OF THE ART SUITE FOR DESKTOP & MOBILE
-                    </p>
-                </RevealOnScroll>
+              {/* 1. Milestones & Achievements */}
+              <RevealOnScroll className="flex flex-col items-center">
+                  <button 
+                      onClick={onGoToProgramDetail}
+                      className="mb-16 px-12 py-4 rounded-full bg-[#b91c1c] text-white font-bold uppercase tracking-[0.2em] shadow-2xl hover:bg-red-800 transition-colors"
+                  >
+                      <i className="fas fa-info-circle mr-2"></i> Learn More About The Program
+                  </button>
+                  
+                  <h2 className={`text-4xl md:text-6xl font-bold brand-font uppercase tracking-widest mb-10 ${isDarkMode ? 'text-white' : 'text-zinc-900'}`}>
+                      Milestones & Achievements
+                  </h2>
+                  <p className={`text-lg md:text-xl leading-relaxed max-w-4xl mx-auto mb-12 ${isDarkMode ? 'text-zinc-300' : 'text-zinc-700'}`}>
+                      Throughout your mentorship journey, your dedication is tracked and celebrated. You will receive recognition through <span className="font-bold">official digital badges</span>, exclusive pilot awards, and a progressive rank structure. Every milestone you reach within the WingMentor ecosystem is a verifiable achievement that signals your growth as an aviator and a leader. We provide <span className="font-bold">Program Completion Certificates</span> and specialized awards for mentors who exhibit exceptional CRM and technical consultation skills. These aren't just pieces of paper; they are assets for your professional portfolio, proving you have been vetted and recognized by a senior panel of industry professionals.
+                  </p>
+                  <div className="w-full max-w-5xl mx-auto rounded-2xl overflow-hidden shadow-2xl border-4 border-white/20">
+                      <img src="https://lh3.googleusercontent.com/d/1gQD0i-4-_dXEjs12ZO5DYksMLLHCcDxR" alt="WingMentor Passport and Awards" className="w-full h-auto object-cover" />
+                  </div>
+              </RevealOnScroll>
 
-                {/* TABLET VISUALIZATION (THE IMAGE PLACEMENT) */}
-                <div className="w-full max-w-4xl mx-auto mb-20 px-4">
-                     <div className={`relative rounded-[2.5rem] overflow-hidden shadow-2xl group border-[12px] bg-black ${isDarkMode ? 'border-zinc-800' : 'border-zinc-200'} aspect-[3/4] md:aspect-[4/3] max-h-[800px]`}>
-                        
-                        {/* Status Bar */}
-                        <div className="absolute top-0 w-full h-8 px-6 flex justify-between items-center z-20 text-white text-[10px] font-bold">
-                            <span>9:41</span>
-                            <div className="flex items-center space-x-1">
-                                <i className="fas fa-signal"></i>
-                                <i className="fas fa-wifi"></i>
-                                <i className="fas fa-battery-full"></i>
-                            </div>
-                        </div>
+              {/* 2. Differentiation (Comic) */}
+              <RevealOnScroll className="flex flex-col items-center">
+                  <h2 className={`text-3xl md:text-5xl font-bold brand-font uppercase tracking-tight mb-12 ${isDarkMode ? 'text-white' : 'text-zinc-900'}`}>
+                      Differentiation: Flight Instructor vs Wing Mentor<br/>Consultancy Approach
+                  </h2>
+                  <div className="w-full max-w-6xl mx-auto rounded-xl overflow-hidden shadow-2xl border border-zinc-500/20">
+                      <img src={images.INSTRUCTION_VS_CONSULTANCY_IMG} alt="Comparison Comic" className="w-full h-auto object-contain" />
+                  </div>
+              </RevealOnScroll>
 
-                        {/* Screen Content */}
-                        <div className="absolute inset-0 bg-[#f5f5f7] dark:bg-[#1c1c1e] pt-12 pb-20 px-6 flex flex-col overflow-y-auto scrollbar-hide">
-                            <div className="flex justify-between items-center mb-8">
-                                <div>
-                                    <h3 className="text-2xl font-bold text-black dark:text-white leading-none">Pilot Apps</h3>
-                                    <p className="text-[10px] text-zinc-500 uppercase tracking-widest font-bold mt-1">Made for Pilots by Pilots</p>
-                                </div>
-                                <div className="w-8 h-8 rounded-full bg-zinc-200 dark:bg-zinc-800 flex items-center justify-center">
-                                    <i className="fas fa-moon text-zinc-500 dark:text-zinc-300"></i>
-                                </div>
-                            </div>
+              {/* 3. Consultation Text */}
+              <RevealOnScroll className="max-w-4xl mx-auto text-center space-y-8">
+                  <p className={`text-lg md:text-xl leading-relaxed ${isDarkMode ? 'text-zinc-300' : 'text-zinc-800'}`}>
+                      It is crucial to understand the distinction: <span className="font-bold">We do not teach lectures or seminars.</span> It is not our role to teach initial concepts or replace your flight school's curriculum. Instead, our mission is to <span className="font-bold">support and consult</span> based on your specific performance within your education and flight training in the aviation industry.
+                  </p>
+                  <p className={`text-lg md:text-xl leading-relaxed ${isDarkMode ? 'text-zinc-300' : 'text-zinc-800'}`}>
+                      Whether you are a <span className="font-bold">student pilot</span> struggling with a specific maneuver, a <span className="font-bold">flight instructor</span> looking to refine your briefing techniques, or a <span className="font-bold">pilot returning after 10 years</span> who needs a skills refresher to get back in the cockpit—this is where WingMentor comes in. We analyze your performance gaps and provide the targeted consultation needed to bridge them.
+                  </p>
+                  <div className="pt-8">
+                      <p className="text-sm italic text-zinc-500 mb-4">Read more engaging sketched pilot real life scenarios in our handbook</p>
+                      <button 
+                          onClick={onGoToOperatingHandbook}
+                          className="px-12 py-4 rounded-full bg-blue-700 text-white font-bold uppercase tracking-[0.15em] shadow-xl hover:bg-blue-800 transition-colors flex items-center mx-auto"
+                      >
+                          Read The Handbook as a Requirement of the Program <i className="fas fa-book-open ml-3"></i>
+                      </button>
+                  </div>
+              </RevealOnScroll>
 
-                            {/* Main Grid */}
-                            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8">
-                                {appSuiteData.filter(app => !app.isTool).map((app, i) => (
-                                    <div key={i} className="flex flex-col items-center group/icon cursor-pointer">
-                                        <div className={`w-20 h-20 md:w-24 md:h-24 rounded-2xl ${app.color} shadow-lg flex items-center justify-center mb-2 relative overflow-hidden transition-transform group-hover/icon:scale-105`}>
-                                            <div className="absolute inset-0 bg-gradient-to-tr from-white/10 to-transparent"></div>
-                                            {/* Gloss Effect */}
-                                            <div className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-white/20 to-transparent"></div>
-                                            
-                                            {app.icon === 'fa-terminal' ? (
-                                                <div className="text-center leading-none">
-                                                    <div className="bg-black text-white text-[6px] px-1 mb-1">WING MENTOR</div>
-                                                    <div className="text-[10px] font-mono bg-white text-black px-1 font-bold">EXAMINATION</div>
-                                                    <div className="text-[10px] font-mono bg-white text-black px-1 font-bold mt-0.5">TERMINAL</div>
-                                                </div>
-                                            ) : app.icon === 'fa-box-open' ? (
-                                                <div className="text-center p-1 border-2 border-white/50 rounded-sm">
-                                                    <div className="text-[5px] text-white uppercase mb-0.5">DO NOT OPEN</div>
-                                                    <div className="bg-white text-black text-[6px] font-bold px-1 py-0.5">BLACK BOX</div>
-                                                </div>
-                                            ) : (
-                                                <i className={`fas ${app.icon} text-3xl md:text-4xl ${app.textColor} drop-shadow-md`}></i>
-                                            )}
-                                        </div>
-                                        <span className="text-[10px] font-medium text-center text-black dark:text-white w-20 leading-tight">{app.title}</span>
-                                    </div>
-                                ))}
-                            </div>
+              {/* 4. Approach Chart */}
+              <RevealOnScroll className="w-full max-w-6xl mx-auto bg-white text-black p-8 md:p-16 rounded-3xl shadow-2xl border border-zinc-200">
+                  <h2 className="text-4xl md:text-5xl font-bold brand-font uppercase tracking-wider mb-12 text-center text-black">
+                      The Wing Mentor Approach Chart
+                  </h2>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-12 text-left">
+                      {APPROACH_STEPS.map((step, idx) => (
+                          <div key={idx} className="flex space-x-6">
+                              <span className="text-4xl font-black text-yellow-500 opacity-80">{step.num}.</span>
+                              <div>
+                                  <h4 className="text-xl font-bold uppercase mb-2 text-zinc-900">{step.title}</h4>
+                                  <p className="text-sm leading-relaxed text-zinc-600">{step.desc}</p>
+                              </div>
+                          </div>
+                      ))}
+                  </div>
+                  <div className="mt-16 pt-8 border-t border-zinc-200 text-center text-zinc-500 italic text-sm">
+                      "Within your first 20 hours, you will be supervised by one of our Wing Mentor team members. Once completed, your Wing Mentor passport will be stamped, marking your first milestone."
+                  </div>
+              </RevealOnScroll>
 
-                            {/* Divider */}
-                            <div className="flex flex-col items-center mb-8">
-                                <p className="text-[9px] font-bold text-zinc-400 uppercase tracking-widest mb-2">Press to view Pilot Tools</p>
-                                <i className="fas fa-chevron-down text-zinc-300 animate-bounce"></i>
-                            </div>
+              {/* 5. CTAs: Mentor & Mentee - REFACTORED TO VERTICAL RECTANGULAR CARDS */}
+              <div className="w-full max-w-4xl mx-auto flex flex-col gap-10">
+                  
+                  {/* Mentor CTA - Red Card (On Top) */}
+                  <RevealOnScroll className={`flex flex-col md:flex-row overflow-hidden rounded-3xl shadow-2xl border-2 border-[#b91c1c] ${isDarkMode ? 'bg-zinc-900' : 'bg-white'}`}>
+                      {/* Image Side */}
+                      <div className="w-full md:w-5/12 h-64 md:h-auto relative">
+                          <img 
+                            src="https://lh3.googleusercontent.com/d/143EeRX8BneoJRBh32bD4UgpHLUByBCbc" 
+                            alt="Mentor Handshake" 
+                            className="absolute inset-0 w-full h-full object-cover"
+                          />
+                          <div className="absolute inset-0 bg-[#b91c1c]/20"></div>
+                      </div>
+                      
+                      {/* Content Side */}
+                      <div className="w-full md:w-7/12 p-8 md:p-10 flex flex-col justify-center text-left">
+                          <h2 className={`text-2xl md:text-3xl font-bold brand-font uppercase tracking-tight mb-4 ${isDarkMode ? 'text-white' : 'text-zinc-900'}`}>
+                              Becoming a Wing Mentor
+                          </h2>
+                          <p className={`text-sm leading-relaxed mb-6 ${isDarkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>
+                              Walk into an interview not just with a license, but with the leverage to say, '<span className="italic font-bold">I have supported and guided pilots.</span>' Transform your flight hours into verifiable leadership experience.
+                          </p>
+                          <button 
+                              onClick={onGoToEnrollment}
+                              className="w-full md:w-auto py-3 px-8 bg-[#b91c1c] text-white font-bold uppercase tracking-[0.2em] rounded-lg hover:bg-red-800 transition-colors flex justify-center items-center text-xs"
+                          >
+                              Enroll as Mentor <i className="fas fa-plane-departure ml-3"></i>
+                          </button>
+                      </div>
+                  </RevealOnScroll>
 
-                            {/* Tools Grid */}
-                            <div className="grid grid-cols-2 gap-4">
-                                {appSuiteData.filter(app => app.isTool).map((app, i) => (
-                                    <div key={i} className="bg-zinc-800 rounded-2xl p-4 flex flex-col items-center justify-center shadow-lg relative overflow-hidden group/tool cursor-pointer h-24">
-                                        <i className={`fas ${app.icon} text-2xl ${app.textColor} mb-2`}></i>
-                                        <span className="text-xs font-bold text-white uppercase tracking-wider">{app.title}</span>
-                                        <span className="text-[8px] text-zinc-400">{app.desc.split('.')[0]}</span>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
+                  {/* Mentee CTA - Blue Card (Below) */}
+                  <RevealOnScroll className={`flex flex-col md:flex-row overflow-hidden rounded-3xl shadow-2xl border-2 border-blue-600 ${isDarkMode ? 'bg-zinc-900' : 'bg-white'}`} delay={200}>
+                      {/* Image Side */}
+                      <div className="w-full md:w-5/12 h-64 md:h-auto relative">
+                          <img 
+                            src={images.STORY_MENTOR_1} 
+                            alt="Mentorship Session" 
+                            className="absolute inset-0 w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500" 
+                          />
+                          <div className="absolute inset-0 bg-blue-600/20"></div>
+                      </div>
 
-                        {/* Bottom Nav Bar (Visual Only) */}
-                        <div className="absolute bottom-0 w-full h-16 bg-[#f5f5f7]/90 dark:bg-[#1c1c1e]/90 backdrop-blur-md border-t border-zinc-200 dark:border-zinc-800 flex justify-around items-center px-6 z-20 pb-2">
-                            <div className="flex flex-col items-center text-blue-500">
-                                <i className="fas fa-home text-lg"></i>
-                                <span className="text-[9px] font-medium mt-1">Home</span>
-                            </div>
-                            <div className="flex flex-col items-center text-zinc-400">
-                                <i className="fas fa-brain text-lg"></i>
-                                <span className="text-[9px] font-medium mt-1">Tools</span>
-                            </div>
-                            <div className="flex flex-col items-center text-zinc-400">
-                                <i className="far fa-comments text-lg"></i>
-                                <span className="text-[9px] font-medium mt-1">Mentor</span>
-                            </div>
-                            <div className="flex flex-col items-center text-zinc-400">
-                                <i className="far fa-file-alt text-lg"></i>
-                                <span className="text-[9px] font-medium mt-1">Debrief</span>
-                            </div>
-                        </div>
-
-                        {/* Home Bar */}
-                        <div className="absolute bottom-1 left-1/2 -translate-x-1/2 w-32 h-1 bg-black dark:bg-white rounded-full z-30"></div>
-                     </div>
-                </div>
-
-                {/* Carousel of Cards */}
-                <div className="w-full max-w-[90rem] mx-auto px-6 relative">
-                    {/* Scroll Controls */}
-                    <div className="flex justify-end gap-3 mb-6 px-2">
-                        <button 
-                            onClick={() => scrollApps('left')} 
-                            className={`w-10 h-10 rounded-full flex items-center justify-center border transition-all ${isDarkMode ? 'bg-zinc-800 border-zinc-700 text-white hover:bg-zinc-700' : 'bg-white border-zinc-300 text-zinc-800 hover:bg-zinc-100'}`}
-                        >
-                            <i className="fas fa-chevron-left"></i>
-                        </button>
-                        <button 
-                            onClick={() => scrollApps('right')} 
-                            className={`w-10 h-10 rounded-full flex items-center justify-center border transition-all ${isDarkMode ? 'bg-zinc-800 border-zinc-700 text-white hover:bg-zinc-700' : 'bg-white border-zinc-300 text-zinc-800 hover:bg-zinc-100'}`}
-                        >
-                            <i className="fas fa-chevron-right"></i>
-                        </button>
-                    </div>
-
-                    {/* Horizontal Scroll Container */}
-                    <div ref={appsScrollRef} className="flex overflow-x-auto gap-6 pb-12 snap-x snap-mandatory scrollbar-hide px-2">
-                        {appSuiteData.map((app, i) => (
-                            <div 
-                                key={i} 
-                                className={`min-w-[300px] md:min-w-[360px] snap-center p-8 rounded-3xl border flex flex-col transition-all duration-300 hover:-translate-y-2 hover:shadow-xl group
-                                           ${isDarkMode 
-                                             ? 'bg-zinc-900/50 border-zinc-800 shadow-lg' 
-                                             : 'bg-white border-zinc-200 shadow-md'}`}
-                            >
-                                <div className={`w-16 h-16 rounded-2xl ${app.color} flex items-center justify-center mb-6 shadow-lg relative overflow-hidden`}>
-                                    <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent"></div>
-                                    <i className={`fas ${app.icon} text-2xl ${app.textColor}`}></i>
-                                </div>
-                                <h3 className={`text-xl font-bold brand-font uppercase mb-2 tracking-wide ${isDarkMode ? 'text-white' : 'text-zinc-900'}`}>
-                                    {app.title}
-                                </h3>
-                                <div className="w-8 h-1 bg-yellow-500 mb-4 rounded-full"></div>
-                                <p className={`text-xs leading-relaxed font-light ${isDarkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>
-                                    {app.desc}
-                                </p>
-                            </div>
-                        ))}
-                        
-                        {/* Directory / Early Access Card */}
-                        <div className={`min-w-[300px] md:min-w-[360px] snap-center p-8 rounded-3xl border-2 border-dashed flex flex-col justify-center items-center text-center relative overflow-hidden group
-                                       ${isDarkMode 
-                                         ? 'bg-yellow-900/10 border-yellow-500/30' 
-                                         : 'bg-yellow-50 border-yellow-500/30'}`}>
-                            <div className="absolute inset-0 bg-yellow-500/5 group-hover:bg-yellow-500/10 transition-colors duration-500"></div>
-                            
-                            <div className="w-16 h-16 bg-yellow-500 rounded-full flex items-center justify-center mb-6 shadow-[0_0_30px_rgba(234,179,8,0.4)] animate-pulse">
-                                <i className="fas fa-lock-open text-2xl text-black"></i>
-                            </div>
-                            
-                            <h3 className={`text-xl font-bold brand-font uppercase mb-2 text-yellow-600 dark:text-yellow-500 relative z-10`}>
-                                Early Access Program
-                            </h3>
-                            <p className={`text-[10px] font-bold uppercase tracking-widest mb-6 ${isDarkMode ? 'text-zinc-400' : 'text-zinc-500'} relative z-10`}>
-                                Join the Beta Flight Crew
-                            </p>
-                            <button 
-                                onClick={onGoToEnrollment} 
-                                className="px-6 py-3 bg-yellow-600 hover:bg-yellow-500 text-black font-bold uppercase tracking-widest text-[10px] rounded-full shadow-lg transform transition-all hover:scale-105 hover:shadow-yellow-500/40 relative z-10"
-                            >
-                                Request Access Now
-                            </button>
-                        </div>
-                    </div>
-                </div>
+                      {/* Content Side */}
+                      <div className="w-full md:w-7/12 p-8 md:p-10 flex flex-col justify-center text-left">
+                          <h2 className={`text-2xl md:text-3xl font-bold brand-font uppercase tracking-tight mb-4 ${isDarkMode ? 'text-white' : 'text-zinc-900'}`}>
+                              Enroll Now as Mentee
+                          </h2>
+                          <p className={`text-sm leading-relaxed mb-6 ${isDarkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>
+                              Gain a decisive advantage in your flight training. Receive personalized guidance, unlock the Black Box Knowledge Vault, and connect with experienced mentors who have already walked the path to the cockpit.
+                          </p>
+                          <button 
+                              onClick={onGoToEnrollment}
+                              className="w-full md:w-auto py-3 px-8 bg-blue-700 text-white font-bold uppercase tracking-[0.2em] rounded-lg hover:bg-blue-800 transition-colors flex justify-center items-center text-xs"
+                          >
+                              Enroll as Mentee <i className="fas fa-graduation-cap ml-3"></i>
+                          </button>
+                      </div>
+                  </RevealOnScroll>
               </div>
+
+              {/* 5b. Mentee Additional Text */}
+              <RevealOnScroll className="max-w-4xl mx-auto text-center">
+                  <p className={`text-lg leading-relaxed font-mono ${isDarkMode ? 'text-zinc-400' : 'text-zinc-700'}`}>
+                      For the <span className="text-blue-500 font-bold">Mentee</span>, your path is one of guided growth. Your mission is to absorb, learn, and overcome challenges with the support of a dedicated mentor. Upon successful enrollment and a vetting interview, you gain access to the Wing Mentor Knowledge Vault—our comprehensive library of resources including study materials for PPL, CPL, IR, and ME ratings. This is about building a deep, practical understanding that prepares you for your next lesson and instills the confidence to command a career.
+                  </p>
+              </RevealOnScroll>
+
+              {/* 6. WingMentor App Suite */}
+              <RevealOnScroll className="flex flex-col items-center">
+                  <h2 className={`text-4xl md:text-7xl font-bold brand-font uppercase tracking-widest mb-2 ${isDarkMode ? 'text-white' : 'text-zinc-900'}`}>
+                      WINGMENTOR APP SUITE
+                  </h2>
+                  <h3 className="text-2xl md:text-4xl font-bold uppercase tracking-[0.5em] text-[#d4af37] mb-16">
+                      DIGITAL CORE
+                  </h3>
+                  <div className="w-full max-w-4xl mx-auto">
+                      <div className="relative rounded-[3rem] border-[14px] border-zinc-900 bg-black overflow-hidden shadow-2xl">
+                          <img src={images.IPAD_APPS_IMG} alt="WingMentor Digital Core on iPad" className="w-full h-auto object-cover" />
+                      </div>
+                  </div>
+              </RevealOnScroll>
+
+          </div>
+      </div>
 
               {/* ... (Subsequent sections like 'How We Fill The Gap', 'Why Wing Mentor', etc.) ... */}
               {/* How We Fill The Aviation Low Timer Pilot Gap */}
@@ -1042,8 +1027,6 @@ export const LandingPage: React.FC<LandingPageProps> = ({ isVideoWarm = false, s
                     </div>
                 </div>
               </footer>
-          </div>
-      </div>
     </div>
   );
 };

@@ -21,7 +21,7 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ showBars = false }
           <img 
               src={STARTUP_LOGO} 
               alt="WingMentor Startup Logo" 
-              className="w-[320px] md:w-[480px] h-auto object-contain transition-all duration-1000" 
+              className="w-[320px] md:w-[480px] h-auto object-contain transition-all duration-1000 filter invert" 
               onLoad={(e) => {
                   const img = e.currentTarget;
                   if (img.naturalWidth > 0) {
