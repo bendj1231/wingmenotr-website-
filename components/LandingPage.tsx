@@ -454,24 +454,111 @@ export const LandingPage: React.FC<LandingPageProps> = ({ isVideoWarm = false, s
                 </div>
             </div>
         </div>
-        
-        {/* Laptop Suite Image Showcase */}
+
+        {/* Device Showcase - ON TOP */}
         <div className="w-full flex flex-col items-center mb-12 px-4">
-            <div className="relative w-full max-w-5xl group perspective-1000">
-                <div className="relative transform transition-transform duration-700 hover:scale-[1.02] hover:rotate-x-2">
-                    {/* Ambient Glow behind the laptop */}
-                    <div className={`absolute -inset-4 bg-gradient-to-t from-blue-500/20 to-purple-500/10 blur-3xl rounded-[50%] opacity-40 transition-opacity group-hover:opacity-70 ${isDarkMode ? 'block' : 'hidden'}`}></div>
-                    
+            <div className="relative w-full max-w-7xl flex flex-col md:flex-row items-center md:items-end justify-center gap-8 md:gap-12 group perspective-1000">
+                
+                {/* Ambient Glow */}
+                <div className={`absolute -inset-4 bg-gradient-to-t from-blue-500/20 to-purple-500/10 blur-3xl rounded-[50%] opacity-40 transition-opacity group-hover:opacity-70 ${isDarkMode ? 'block' : 'hidden'}`}></div>
+
+                {/* Laptop Image */}
+                <div className="relative transform transition-transform duration-700 hover:scale-[1.02] z-10 w-full md:w-2/3">
                     <img 
                         src="https://lh3.googleusercontent.com/d/1_R5nqlbDHHvGt69R11eXYBI4xkFueMqE" 
-                        alt="WingMentor Laptop Suite Interface" 
-                        className="relative z-10 w-full h-auto object-contain drop-shadow-2xl rounded-lg"
+                        alt="WingMentor Laptop Interface" 
+                        className="w-full h-auto object-contain drop-shadow-2xl rounded-lg"
+                    />
+                </div>
+
+                {/* Mobile/iPad Image - Added spacing */}
+                <div className="relative transform transition-transform duration-700 hover:scale-[1.02] z-20 w-3/4 md:w-1/4 -mt-10 md:mt-0 md:mb-1">
+                     <img 
+                        src="https://lh3.googleusercontent.com/d/16EwF2Im4YXP-w5c8roG01kbWC9l9wjEO" 
+                        alt="WingMentor Mobile Interface" 
+                        className="w-full h-auto object-contain drop-shadow-2xl rounded-lg"
                     />
                 </div>
             </div>
-            <p className={`mt-8 text-xs font-mono uppercase tracking-[0.2em] font-bold opacity-60 ${isDarkMode ? 'text-white' : 'text-black'}`}>
+
+            <p className={`mt-12 text-xs font-mono uppercase tracking-[0.2em] font-bold opacity-60 ${isDarkMode ? 'text-white' : 'text-black'}`}>
                 Cross-Platform Digital Command Center
             </p>
+
+            {/* App Directory Links */}
+            <div className="mt-8 flex flex-wrap justify-center gap-6">
+                <button className={`flex items-center space-x-3 px-6 py-3 rounded-xl border transition-all hover:-translate-y-1 shadow-lg cursor-pointer
+                                  ${isDarkMode ? 'bg-zinc-900 border-zinc-700 hover:bg-zinc-800' : 'bg-white border-zinc-300 hover:bg-zinc-50'}`}>
+                    <i className="fab fa-apple text-2xl"></i>
+                    <div className="text-left">
+                        <p className="text-[9px] uppercase tracking-wider opacity-60">Download on the</p>
+                        <p className="text-sm font-bold leading-none">App Store</p>
+                    </div>
+                </button>
+
+                <button className={`flex items-center space-x-3 px-6 py-3 rounded-xl border transition-all hover:-translate-y-1 shadow-lg cursor-pointer
+                                  ${isDarkMode ? 'bg-zinc-900 border-zinc-700 hover:bg-zinc-800' : 'bg-white border-zinc-300 hover:bg-zinc-50'}`}>
+                    <i className="fab fa-google-play text-2xl"></i>
+                    <div className="text-left">
+                        <p className="text-[9px] uppercase tracking-wider opacity-60">Get it on</p>
+                        <p className="text-sm font-bold leading-none">Google Play</p>
+                    </div>
+                </button>
+
+                <button 
+                    onClick={onGoToEnrollment}
+                    className={`flex items-center space-x-3 px-6 py-3 rounded-xl border transition-all hover:-translate-y-1 shadow-lg cursor-pointer
+                                  ${isDarkMode ? 'bg-blue-600 border-blue-500 text-white hover:bg-blue-500' : 'bg-blue-600 border-blue-500 text-white hover:bg-blue-500'}`}>
+                    <i className="fas fa-globe text-2xl"></i>
+                    <div className="text-left">
+                        <p className="text-[9px] uppercase tracking-wider opacity-80">Access via Browser</p>
+                        <p className="text-sm font-bold leading-none">Launch Web App</p>
+                    </div>
+                </button>
+            </div>
+        </div>
+
+        {/* WingMentor Portal Access Section - MOVED BELOW DEVICE SHOWCASE */}
+        <div className="w-full max-w-5xl mx-auto mt-24 mb-16 px-6 flex flex-col items-center text-center">
+            <div className="w-full h-px bg-gradient-to-r from-transparent via-zinc-400 to-transparent opacity-30 mb-12"></div>
+            
+            <RevealOnScroll>
+                <h3 className={`text-2xl md:text-3xl font-bold brand-font uppercase tracking-widest mb-6 ${isDarkMode ? 'text-white' : 'text-zinc-900'}`}>
+                    WingMentor Program Portal
+                </h3>
+            </RevealOnScroll>
+
+            <div className="relative w-full max-w-4xl group perspective-1000 mb-8">
+                <div className="absolute -inset-1 bg-gradient-to-r from-yellow-600 to-red-600 rounded-xl blur opacity-20 group-hover:opacity-40 transition duration-1000"></div>
+                <div className={`relative rounded-xl overflow-hidden border-2 shadow-2xl ${isDarkMode ? 'border-zinc-800 bg-zinc-900' : 'border-zinc-200 bg-white'}`}>
+                    <img 
+                        src="https://lh3.googleusercontent.com/d/1ey-O8iN08k9C5z2aqCcSANVJAFmhhD6k" 
+                        alt="WingMentor Portal Interface" 
+                        className="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-[1.01]"
+                    />
+                    {/* Overlay Gradient */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60"></div>
+                    
+                    <div className="absolute bottom-0 left-0 w-full p-6 text-left">
+                        <div className="flex items-center space-x-2 mb-2">
+                            <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+                            <span className="text-[10px] font-mono font-bold text-white uppercase tracking-widest">System Online</span>
+                        </div>
+                        <p className="text-white text-xs md:text-sm font-mono opacity-80">SECURE_GATEWAY_V2.4</p>
+                    </div>
+                </div>
+            </div>
+
+            <RevealOnScroll delay={100}>
+                <div className="max-w-3xl mx-auto space-y-4">
+                    <p className={`text-lg md:text-xl font-light leading-relaxed ${isDarkMode ? 'text-zinc-300' : 'text-zinc-700'}`}>
+                        This portal is your command center.
+                    </p>
+                    <p className={`text-sm md:text-base leading-relaxed font-sans ${isDarkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>
+                        Seamlessly connect to the WingMentor Network and unlock the full suite of pilot-engineered applications. From here, you manage your flight profile, access the Black Box intelligence vault, and engage with the community in the Gap Forum. It is the centralized gateway where your career acceleration begins.
+                    </p>
+                </div>
+            </RevealOnScroll>
         </div>
 
         {/* Unified Link positioned on the border of the section */}
