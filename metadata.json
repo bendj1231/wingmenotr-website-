@@ -1,0 +1,7 @@
+{
+  "name": "Copy of wing mentor v2",
+  "description": "A comprehensive aviation mentorship and management platform for pilots.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
