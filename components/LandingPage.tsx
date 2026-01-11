@@ -482,26 +482,17 @@ export const LandingPage: React.FC<LandingPageProps> = ({ isVideoWarm = false, s
             </div>
 
             <p className={`mt-12 text-xs font-mono uppercase tracking-[0.2em] font-bold opacity-60 ${isDarkMode ? 'text-white' : 'text-black'}`}>
-                Cross-Platform Digital Command Center
+                Cross-Platform WingMentor Pilot Apps Suite
             </p>
 
-            {/* App Directory Links */}
+            {/* Access Buttons - REPLACED WITH MOBILE AND DESKTOP */}
             <div className="mt-8 flex flex-wrap justify-center gap-6">
                 <button className={`flex items-center space-x-3 px-6 py-3 rounded-xl border transition-all hover:-translate-y-1 shadow-lg cursor-pointer
                                   ${isDarkMode ? 'bg-zinc-900 border-zinc-700 hover:bg-zinc-800' : 'bg-white border-zinc-300 hover:bg-zinc-50'}`}>
-                    <i className="fab fa-apple text-2xl"></i>
+                    <i className="fas fa-mobile-alt text-2xl"></i>
                     <div className="text-left">
-                        <p className="text-[9px] uppercase tracking-wider opacity-60">Download on the</p>
-                        <p className="text-sm font-bold leading-none">App Store</p>
-                    </div>
-                </button>
-
-                <button className={`flex items-center space-x-3 px-6 py-3 rounded-xl border transition-all hover:-translate-y-1 shadow-lg cursor-pointer
-                                  ${isDarkMode ? 'bg-zinc-900 border-zinc-700 hover:bg-zinc-800' : 'bg-white border-zinc-300 hover:bg-zinc-50'}`}>
-                    <i className="fab fa-google-play text-2xl"></i>
-                    <div className="text-left">
-                        <p className="text-[9px] uppercase tracking-wider opacity-60">Get it on</p>
-                        <p className="text-sm font-bold leading-none">Google Play</p>
+                        <p className="text-[9px] uppercase tracking-wider opacity-60">Access on</p>
+                        <p className="text-sm font-bold leading-none">Mobile</p>
                     </div>
                 </button>
 
@@ -509,10 +500,10 @@ export const LandingPage: React.FC<LandingPageProps> = ({ isVideoWarm = false, s
                     onClick={onGoToEnrollment}
                     className={`flex items-center space-x-3 px-6 py-3 rounded-xl border transition-all hover:-translate-y-1 shadow-lg cursor-pointer
                                   ${isDarkMode ? 'bg-blue-600 border-blue-500 text-white hover:bg-blue-500' : 'bg-blue-600 border-blue-500 text-white hover:bg-blue-500'}`}>
-                    <i className="fas fa-globe text-2xl"></i>
+                    <i className="fas fa-desktop text-2xl"></i>
                     <div className="text-left">
-                        <p className="text-[9px] uppercase tracking-wider opacity-80">Access via Browser</p>
-                        <p className="text-sm font-bold leading-none">Launch Web App</p>
+                        <p className="text-[9px] uppercase tracking-wider opacity-80">Access on</p>
+                        <p className="text-sm font-bold leading-none">Desktop</p>
                     </div>
                 </button>
             </div>
